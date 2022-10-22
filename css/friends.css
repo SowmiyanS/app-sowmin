@@ -87,14 +87,15 @@
 {
     width:max-content;
     margin: 8px auto 8px auto;
-    padding: 5px; 
+    padding: 5px;
+    align-self:inherit;
     border: 1px solid blueviolet;
     border-radius: 8px;
 }
 
 .box:hover
 {
-    background: linear-gradient(65deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
+    background: linear-gradient(65deg, #e73c7e, #d93ce7, #23d5ab, #52eea0);
     color: beige;
 }
 
