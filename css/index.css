@@ -1,14 +1,19 @@
+/*Initial CSS Start*/
 *, html
 {
     margin: 0;
     padding: 0;
 }
+/*Initial CSS End*/
 
+/*General CSS Start*/
 .light
 {
     color: beige;
 }
+/*General CSS End*/
 
+/*Nav Start*/
 #nav
 {
     /*height: 25px;*/
@@ -56,34 +61,75 @@
     padding-top: 3px;
     margin: 0px;
     height: auto;
-    width: 50px;
+    width: 40px;
 }
 
 #logo
 {
     margin-left: 4px;
     background: white;
-    width: 50px;
+    width: 40px;
     height: auto;
     border-radius: 50%;
     border: 1px solid blueviolet;
+}
+
+#logo:hover
+{
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(167, 85, 245, 0.671);
 }
 
 #td-logo
 {
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 25px;
+    width: 40px;
+}
+
+/*    box-shadow: 2px 2px 1px 1px rgba(255, 255, 255, 0.1);*/
+
+#burg-img
+{
+    padding-top: 5px;
+    padding-left: 5px;
+    margin: 0px;
+    height: auto;
+    width: 30px;
+}
+
+#burg
+{
+    margin-right: 4px;
+    background: white;
+    width: 40px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid blueviolet;
+}
+
+#burg:hover
+{
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(167, 85, 245, 0.671);
+}
+
+#td-burg
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 40px;
 }
 
 #td-header
 {
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-right: 4.5%;
     font-family: 'Courier New', Courier, monospace;
 }
+/*Nav End*/
 
+/*Box Start*/
 .box
 {
     width:max-content;
@@ -132,3 +178,4 @@ a:active
 {
     color: black;
 }
+/*Box End*/
