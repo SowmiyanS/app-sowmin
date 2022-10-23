@@ -198,16 +198,18 @@ a:active
     width: 24px;
     height: auto;
     border: 1px solid blueviolet;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: rgba(137, 43, 226, 0.1);
 }
 em
 {
     border: 1px solid blueviolet;
     background-color: rgba(137, 43, 226, 0.1);
-    border-radius: 8px;
+    border-radius: 4px;
     height: max-content;
     width: max-content;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 /*Emp Styles End*/
 
