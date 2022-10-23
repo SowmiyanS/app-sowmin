@@ -129,8 +129,8 @@
 }
 /*Nav End*/
 
-/*Box Start*/
-.box
+/*Button Start*/
+.button
 {
     width:max-content;
     margin: 8px auto 8px auto;
@@ -139,7 +139,7 @@
     border-radius: 8px;
 }
 
-.box:hover
+.button:hover
 {
     background: linear-gradient(65deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
     color: beige;
@@ -178,4 +178,62 @@ a:active
 {
     color: black;
 }
-/*Box End*/
+/*Button End*/
+
+/*Container Start*/
+.container
+{
+    width: 700px;
+    border: 1px solid blueviolet;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 8px auto 8px auto;
+    text-align: left;
+}
+/*Container End*/
+
+/*Emp Styles Start*/
+#img-emp
+{
+    width: 24px;
+    height: auto;
+    border: 1px solid blueviolet;
+    border-radius: 8px;
+    background-color: rgba(137, 43, 226, 0.1);
+}
+em
+{
+    border: 1px solid blueviolet;
+    background-color: rgba(137, 43, 226, 0.1);
+    border-radius: 8px;
+    height: max-content;
+    width: max-content;
+}
+/*Emp Styles End*/
+
+/*Footer Start*/
+.footer
+{
+    background: rgb(78, 78, 78);
+    height: 100px;
+}
+
+/*
+#id-footer-left
+{
+
+}
+
+#id-footer-right
+{
+
+}
+
+#id-footer-copyright
+{
+
+}
+*/
+
+/*Footer End*/
+
