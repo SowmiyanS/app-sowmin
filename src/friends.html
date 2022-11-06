@@ -25,15 +25,28 @@
                         <h1 class="light">SowmiN</h1>
                     </td>
                     <td id="td-burg">
-                        <div id="burg" title="friends">
-                            <a href="../src/friends.html">
-                                <img id="burg-img" src="../src/burg.png" alt="burg logo">
-                            </a>
+                        <!--Note that the ondblclick is working differently for desktop and mobile devices-->
+                        <!--In Desktop, two click, that occur 'quickly' is considered dblclick-->
+                        <!--For Mobile the first click is always as a click-->
+                        <div id="burg" title="More" onclick="popupon()">
+                            <img id="burg-img" src="../src/burg.png" alt="burg logo">
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
+
+        <!--Pop Box Start-->
+        <div class="popup" id="popup-box" style="visibility: hidden;">
+            <a href="../index.html">
+                <h5 id="popup-h5" align="center" >Home</h6>
+            </a>
+            <a href="../src/friends.html">
+                <h5 id="popup-h5" align="center" >Friends</h6>
+            </a>
+        </div>
+        <!--Popup Box End-->
+
         <!--Nav End-->
         <!--Button Start-->
         <div class="button" align="center">
@@ -68,7 +81,7 @@
                 </tr>
                 <tr>
                     <td id="td-footer-copyright" colspan="2" align="center">
-                        <p class="light">Copyright (c) 2022 Sowmiyan</p>
+                        <p class="light">Copyright &copy; 2022 Sowmiyan</p>
                     </td>
                 </tr>
             </table>
