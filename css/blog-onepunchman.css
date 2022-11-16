@@ -1,0 +1,28 @@
+/*Initial CSS Start*/
+*, html
+{
+    margin: 5px;
+    padding: 5px;
+    font-family: sans-serif;
+    vertical-align: middle;/*This is mainly added for the image in between text to align in the middle*/
+}
+/*Initial CSS End*/
+
+/*General CSS Start*/
+.light
+{
+    color: beige;
+}
+/*General CSS End*/
+
+
+/*Blog Nav Start*/
+
+
+
+/*Blog Nav Ends*/
+
+body
+{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
