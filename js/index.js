@@ -12,6 +12,14 @@ if(window.innerWidth < 727)
     }
 }
 
+//For Video Start
+if(/Mobi/i.test(window.navigator.userAgent))
+{
+    const video = document.getElementById('video');
+    video.style.width = '85%';
+}
+//Video Ends
+
 //For Popup BoxStart
 //This state variable is a dependancy for the popup component
 let state = 0;
@@ -33,18 +41,18 @@ function popupon()
     //    popup.style.left = "77%";
         popup.style.top = "100%";
         popup.style.left = "100%";
-        if((window.outerHeight - window.innerHeight) > 105)
+        if(/Mobi/i.test(window.navigator.userAgent))
         {
             //this case works for desktop browser
             //After refreshing the page, the window.innerHeight and .outerHeight are different
             //For desktop browsers [I beleive] alone the difference between these heights is 
             //Greater than 105.
-            popup.style.transform = "translate(-130px, -"+(window.innerHeight-65)+"px)";
+            popup.style.transform = "translate(-130px, -"+(window.outerHeight-65)+"px)";
         }
         else
         {
             //this case works for mobile browser
-            popup.style.transform = "translate(-130px, -"+(window.outerHeight-65)+"px)";
+            popup.style.transform = "translate(-130px, -"+(window.innerHeight-65)+"px)";
         }
     }
     else
