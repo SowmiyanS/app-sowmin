@@ -17,7 +17,7 @@ if(/Mobi/i.test(window.navigator.userAgent))
 {
     const video = document.getElementById('video');
     video.style.width = '85%';
-    video.style.height = '240px';
+    video.style.height = (window.outerWidth)/1.7777+'px';//It calculates the height to match 16:9 ratio
 }
 
 //Video Ends
