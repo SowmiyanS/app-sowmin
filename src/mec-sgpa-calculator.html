@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mec sgpa calculator</title>
+    <link rel="stylesheet" href="../css/mec-sgpa-calculator.css">
+</head>
+<body>
+    <div id="body">
+        <!--Nav Start-->
+        <div id="nav">
+            <table style="width:100%;">
+                <tr>
+                    <td id="td-logo">
+                        <div id="logo" title="SN-home">
+                            <a href="../index.html">
+                                <img id="logo-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745" alt="SN logo">
+                            </a>
+                        </div>
+                    </td>
+                    <td id="td-header" align="center">
+                        <h1 class="light">SowmiN</h1>
+                    </td>
+                    <td id="td-burg">
+                        <!--Note that the ondblclick is working differently for desktop and mobile devices-->
+                        <!--In Desktop, two click, that occur 'quickly' is considered dblclick-->
+                        <!--For Mobile the first click is always as a click-->
+                        <div id="burg" title="More" onclick="popupon()">
+                            <img id="burg-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/burg.png?alt=media&token=4c65b91c-6c1e-4761-a868-69daef00979a" alt="burg logo">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--Pop Box Start-->
+        <div class="popup" id="popup-box" style="visibility: hidden;">
+            <a href="../index.html">
+                <h5 id="popup-h5" align="center" >Home</h6>
+            </a>
+            <a href="../src/friends.html">
+                <h5 id="popup-h5" align="center" >Friends</h6>
+            </a>
+            <a href="../src/blog-home.html">
+                <h5 id="popup-h5" align="center" >Blogs</h6>
+            </a>
+        </div>
+        <!--Popup Box End-->
+
+        <!--Nav End-->
+
+        <!--Container Start-->
+
+        <div class="container" align="center">
+            <h2 align="center">Muthayammal Engineering College</h2>
+            <h3 align="center">An Autonomous Institution</h3>
+        </div>
+
+        <div class="container" align="center">
+            <h4 align="center">SGPA Calculator</h4>
+            <table>
+                <tr>
+                    <td>
+                        <p id="form1">Department:</p>
+                    </td>
+                    <td>
+                        <select name="dept" class="form1">
+                            <option value="">choose the department</option>
+                            <option value="it">Information Technology</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="form1">Regulation:</p>
+                    </td>
+                    <td>
+                        <select name="reg" class="form1">
+                            <option value="">choose the regulation</option>
+                            <option value="2019">R - 2019</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="form1">Semester:</p>
+                    </td>
+                    <td>
+                        <select name="sem" class="form1">
+                            <option value="">choose the semester</option>
+                            <option value="1">semester I</option>
+                            <option value="2">semester II</option>
+                            <option value="3">semester III</option>
+                            <option value="4">semester VI</option>
+                            <option value="5">semester V</option>
+                            <option value="6">semester VI</option>
+                            <option value="7">semester VII</option>
+                            <option value="8">semester VIII</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="button" align="center" onclick="next()">
+                            <h5>Next</h5>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container" align="center" id="grade" style="visibility: hidden;">
+            <table id="grade-table">
+                <tr>
+                    <td style="border: none;">
+                        <p style="font-size: small; text-align: center;"><b>Subject</b></p>
+                    </td>
+                    <td style="border: none;">
+                        <p style="font-size: small; text-align: center;"><b>Credit</b></p>
+                    </td>
+                    <td style="border: none;">
+                        <p style="font-size: small; text-align: center;"><b>Grade</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub1</p>
+                    </td>
+                    <td>
+                        <select name="sub1-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub1-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub2</p>
+                    </td>
+                    <td>
+                        <select name="sub2-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub2-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub3</p>
+                    </td>
+                    <td>
+                        <select name="sub3-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub3-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub4</p>
+                    </td>
+                    <td>
+                        <select name="sub4-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub4-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub5</p>
+                    </td>
+                    <td>
+                        <select name="sub5-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub5-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub6</p>
+                    </td>
+                    <td>
+                        <select name="sub6-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub6-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub7</p>
+                    </td>
+                    <td>
+                        <select name="sub7-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub7-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub8</p>
+                    </td>
+                    <td>
+                        <select name="sub8-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub8-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub9</p>
+                    </td>
+                    <td>
+                        <select name="sub9-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub9-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="sub">sub10</p>
+                    </td>
+                    <td>
+                        <select name="sub10-cd" class="sub-cd">
+                            <option value=" "></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub10-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="marigin-bottom">
+                        <div class="button" align="center" onclick="calculate()">
+                            <h5>Calculate</h5>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container" align="center" id="result" style="visibility: hidden;">
+            <p id="result-text"></p>
+        </div>
+
+        <!--Container Ends-->
+
+    </div>
+    <script src="../js/mec-sgpa-calculator.js"></script>   
+</body>
+</html>
