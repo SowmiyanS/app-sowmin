@@ -90,24 +90,43 @@ function popupoff()
 
 //Main logic starts
 
-function fetchdata(dept, reg, sem)
+var credits = [0,0];
+
+async function fetchdata(dept, reg, sem)
 {
     //firebase fetch subjects, credit points for dept, reg, sem
-    let subjects = ["19GES29 - Wireless Communication", "19ITC21 - Cloud Computing", "19ITC23 - Computer Networks", "19ITE07 - Salesforce CRM and Platform", "19ITE23 - Angular JS", "19ITC30 - Artificial Intelligence", "19ITC22 - Cloud Computing Laboratory", "19ITE08 - Salesforce CRM and platforms Laboratory", "19ITE24 - Angular JS Laboratory"];
-    let credits = [4,3,3,3,4,3,1,1,1,];
-    let data = {
-        subjects,
-        credits
-    }
-    return data
+    let url = "https://app-sowmin-backend-pass1234.cyclic.app/"+reg.toString()+"/"+dept.toUpperCase()+"-"+sem.toString();
+    const response = await fetch(url);
+    console.log(response);
+    let results = await response.json();//.then((data) =>
+    //{
+    //    console.log(data);
+    //    let results = Array(data);
+    //    console.log(results);
+    //    return results;
+    //})
+    console.log(results);
+    return Promise.all(results);
 }
 
-function creditsum(credits)
+function loadspinanimate()
+{
+    grade.style.visibility = "visible";
+    grade.style.display = "flex"; //centers the spinner
+    grade.style.flexDirection = "row";
+    grade.style.flexWrap = "wrap";
+    grade.style.justifyContent = "center";
+    grade.style.alignItems = "center";
+    grade.innerHTML = `<div class="spin"></div>`;
+}
+
+
+function creditsum(credits, length)
 {
     let sum = 0;
-    for(let j = 0; j < credits.length; j++)
+    for(let j = 0; j < length; j++)
     {
-        sum = credits[j] + sum;
+        sum = Number(credits[j].value) + Number(sum);
     }
     return sum;
 }
@@ -117,37 +136,133 @@ const grade = document.getElementById('grade');
 // getting the form1 values
 
 const form1 = document.getElementsByClassName('form1');
-const sub = document.getElementsByClassName('sub');
+//const sub = document.getElementsByClassName('sub'); //not available before next()
 
-const subcd = document.getElementsByClassName('sub-cd');
+//const subcd = document.getElementsByClassName('sub-cd'); //not available before next()
 
-console.log(subcd);
+//console.log(subcd); //not available
 function next()
 {
-    // fetch the data required for form2
-    console.log(form1[0].value,
-    form1[1].value,
-    form1[2].value);
-    //fetch data for form 2
-    let data = fetchdata(form1[0].value, form1[1].value, form1[2].value);
-    //Update the form2 subject values
+    loadspinanimate();
+    let gradetable = `
+    <table id="grade-table">
+        <tr>
+        <td style="border: none;">
+            <p style="font-size: small; text-align: center;"><b>Subject</b></p>
+        </td>
+        <td style="border: none;">
+            <p style="font-size: small; text-align: center;"><b>Credit</b></p>
+        </td>
+        <td style="border: none;">
+            <p style="font-size: small; text-align: center;"><b>Grade</b></p>
+        </td>
+    </tr>`;
 
-    for(let j = 0; j < 10 ; j = j + 1)
+    // fetch the data required for form2
+    console.log(form1[0].value,form1[1].value,form1[2].value);
+    //fetch data for form 2
+    fetchdata(form1[0].value, form1[1].value, form1[2].value).then((results) =>
     {
-        if(data.subjects[j])
+        var selected = `selected="selected"`;
+        credits = results.map(result => result.credit); // storing the credits in global for future use
+        grade.style = "visibilit: visible";
+        for(let sub of results)
         {
-            sub[j].innerHTML = data.subjects[j];
-            subcd[j].value = data.credits[j];
+            gradetable +=
+            `   <tr>
+                    <td>
+                    <select name="sub" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">`;
+            for(let subject of sub.subjectname)
+            {
+                gradetable +=
+                `
+                    <option value="${subject}">${subject}</option>`;
+            }
+
+            gradetable +=
+            `
+            </select>
+                    </td>`;
+
+            gradetable +=
+            `
+                    <td>
+                        <select name="sub1-cd" class="sub-cd" data-selected="${sub.credit}">
+                            <option value=" " `;
+                            if(sub.credit == ""){gradetable += selected;}; gradetable += `></option>
+                            <option value="10" `;
+                            if(sub.credit == 10){gradetable += selected;}; gradetable += `>10</option>
+                            <option value="9" `;
+                            if(sub.credit == 9){gradetable += selected;}; gradetable += `>9</option>
+                            <option value="8" `;
+                            if(sub.credit == 8){gradetable += selected;}; gradetable += `>8</option>
+                            <option value="7" `;
+                            if(sub.credit == 7){gradetable += selected;}; gradetable += `>7</option>
+                            <option value="6" `;
+                            if(sub.credit == 6){gradetable += selected;}; gradetable += `>6</option>
+                            <option value="5" `;
+                            if(sub.credit == 5){gradetable += selected;}; gradetable += `>5</option>
+                            <option value="4" `;
+                            if(sub.credit == 4){gradetable += selected;}; gradetable += `>4</option>
+                            <option value="3" `;
+                            if(sub.credit == 3){gradetable += selected;}; gradetable += `>3</option>
+                            <option value="2" `;
+                            if(sub.credit == 2){gradetable += selected;}; gradetable += `>2</option>
+                            <option value="1" `;
+                            if(sub.credit == 1){gradetable += selected;}; gradetable += `>1</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="sub1-gd" class="sub-gd">
+                            <option value="">choose the grade</option>
+                            <option value="10">O</option>
+                            <option value="9">A+</option>
+                            <option value="8">A</option>
+                            <option value="7">B+</option>
+                            <option value="6">B</option>
+                            <option value="5">U</option>
+                            <option value="0">U+</option>
+                        </select>
+                    </td>
+                </tr>
+            `;
+            
         }
-        else
-        {
-            sub[j].innerHTML = "N/A";
-        }
-    }
+        gradetable += `
+        <tr>
+            <td colspan="2" id="marigin-bottom">
+                <div class="button" align="center" onclick="calculate()">
+                    <h5>Calculate</h5>
+                </div>
+            </td>
+        </tr>
+        </table>
+        <script>
+        document.querySelectorAll('[data-selected]').forEach(e => {
+            e.value = e.dataset.selected
+        });
+        </script>`;
+        grade.innerHTML = gradetable;
+        //for(let j = 0; j < 10 ; j = j + 1)
+        //{
+        //    if(data.subjects[j])
+        //    {
+        //        sub[j].innerHTML = data.subjects[j];
+        //        subcd[j].value = data.credits[j];
+        //    }
+        //    else
+        //    {
+        //        sub[j].innerHTML = "N/A";
+        //    }
+        //}
+        //
+        //grade.style.visibility = "visible";
+    })
+    //console.log("Hello world");
 
     // dependency - grade constant above
-    grade.style.visibility = "visible";
-    console.log(subcd.option);
+    
+    //console.log(subcd.option);
 }
 
 
@@ -156,24 +271,19 @@ const result = document.getElementById('result');
 const resulttext = document.getElementById('result-text');
 
 const subgd = document.getElementsByClassName('sub-gd'); 
+const subcd = document.getElementsByClassName('sub-cd');
 
 function calculate()
 {
     //Calculate the sgpa
     //get data
-    const data = fetchdata(form1[0].value, form1[1].value, form1[2].value);
-    //let credit_sum = creditsum(data.credits);
-    let credit_sum = 0;
-    let dummy = 0;
-    for(let j = 0; j < data.subjects.length; j++)
-    {
-        dummy = subcd[j].value;
-        credit_sum = Number(dummy) + credit_sum;
-        console.log(credit_sum, subcd[j].value);
-    }
+    //console.log(credits);
+    //const data = fetchdata(form1[0].value, form1[1].value, form1[2].value); //no need to call as we already have credits array :)
+    let credit_sum = creditsum(subcd, credits.length);  
+
     console.log(credit_sum);
     let grade_sum = 0.0;
-    for(let j = 0; j < data.subjects.length; j++)
+    for(let j = 0; j < credits.length; j++)
     {
         grade_sum = (subgd[j].value * subcd[j].value) + grade_sum;
         console.log(subcd[j].value);
