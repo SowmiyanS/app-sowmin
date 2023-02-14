@@ -165,7 +165,17 @@ function next()
     {
         var selected = `selected="selected"`;
         credits = results.map(result => result.credit); // storing the credits in global for future use
-        grade.style = "visibilit: visible";
+        grade.style = "visibility: visible";
+        if(window.innerWidth < 727)
+        {
+            const cont = document.getElementsByClassName('container');
+            let x;
+            for(let n = 0;n < cont.length;n++)
+            {
+                x = cont[n];
+                x.style.width = '95%';
+            }
+        }
         for(let sub of results)
         {
             gradetable +=
