@@ -145,6 +145,7 @@ function next()
 {
     loadspinanimate();
     let gradetable = `
+    <form action="#" onSubmit="calculate(); return false">
     <table id="grade-table">
         <tr>
         <td style="border: none;">
@@ -181,7 +182,7 @@ function next()
             gradetable +=
             `   <tr>
                     <td>
-                    <select name="sub" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">`;
+                    <select name="sub" style="width: 100%; border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">`;
             for(let subject of sub.subjectname)
             {
                 gradetable +=
@@ -197,7 +198,7 @@ function next()
             gradetable +=
             `
                     <td>
-                        <select name="sub1-cd" class="sub-cd" data-selected="${sub.credit}">
+                        <select required name="sub1-cd" class="sub-cd" style="width: 100%;">
                             <option value=" " `;
                             if(sub.credit == ""){gradetable += selected;}; gradetable += `></option>
                             <option value="10" `;
@@ -223,7 +224,7 @@ function next()
                         </select>
                     </td>
                     <td>
-                        <select name="sub1-gd" class="sub-gd">
+                        <select required name="sub1-gd" class="sub-gd" style="width: 100%;">
                             <option value="">choose the grade</option>
                             <option value="10">O</option>
                             <option value="9">A+</option>
@@ -239,19 +240,12 @@ function next()
             
         }
         gradetable += `
-        <tr>
-            <td colspan="2" id="marigin-bottom">
-                <div class="button" align="center" onclick="calculate()">
-                    <h5>Calculate</h5>
-                </div>
+        <tr align="center">
+            <td colspan="2" style="border:none">
+                <button class="button"><b>Next</b></button>
             </td>
         </tr>
-        </table>
-        <script>
-        document.querySelectorAll('[data-selected]').forEach(e => {
-            e.value = e.dataset.selected
-        });
-        </script>`;
+        </table></form>`;
         grade.innerHTML = gradetable;
         //for(let j = 0; j < 10 ; j = j + 1)
         //{

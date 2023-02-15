@@ -61,35 +61,36 @@
 
         <div class="container" align="center">
             <h4 align="center">SGPA Calculator</h4>
-            <table>
+            <form action="#" onSubmit="next(); return false"> <!--NOTE!!!!: The action=# denotes that the data is sent to the same page inself instead of sending to another page-->
+            <table>                                           <!--And the onSubmit=next() will only call the function only if the required fields are entered but it will finally refresh the page :( | But the ;return false will prevent to page from reloading :)-->
                 <tr>
-                    <td>
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
                         <p id="form1">Department:</p>
                     </td>
-                    <td>
-                        <select name="dept" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
+                        <select required name="dept" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
                             <option value="">choose the department</option>
                             <option value="it">Information Technology</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
                         <p id="form1">Regulation:</p>
                     </td>
-                    <td>
-                        <select name="reg" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
+                        <select required name="reg" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
                             <option value="">choose the regulation</option>
                             <option value="R2019">R - 2019</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
                         <p id="form1">Semester:</p>
                     </td>
-                    <td>
-                        <select name="sem" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
+                    <td style="border: 1px; border-style: solid; border-top: none; border-left: none; border-right: none;">
+                        <select required name="sem" class="form1" style="border-style: none; box-sizing: content-box; background-color: rgba(252, 244, 252, 0.829); border-top-right-radius: 4px; border-top-left-radius: 4px;">
                             <option value="">choose the semester</option>
                             <option value="1">semester I</option>
                             <option value="2">semester II</option>
@@ -102,357 +103,17 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr align="center">
                     <td colspan="2">
-                        <div class="button" align="center" onclick="next()">
-                            <h5>Next</h5>
-                        </div>
+                        <button class="button"><b>Next</b></button>
                     </td>
                 </tr>
             </table>
+            </form>
         </div>
 
         <div class="container" align="center" id="grade" style="visibility: hidden;">
-            <table id="grade-table">
-                <tr>
-                    <td style="border: none;">
-                        <p style="font-size: small; text-align: center;"><b>Subject</b></p>
-                    </td>
-                    <td style="border: none;">
-                        <p style="font-size: small; text-align: center;"><b>Credit</b></p>
-                    </td>
-                    <td style="border: none;">
-                        <p style="font-size: small; text-align: center;"><b>Grade</b></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub1</p>
-                    </td>
-                    <td>
-                        <select name="sub1-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub1-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub2</p>
-                    </td>
-                    <td>
-                        <select name="sub2-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub2-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub3</p>
-                    </td>
-                    <td>
-                        <select name="sub3-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub3-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub4</p>
-                    </td>
-                    <td>
-                        <select name="sub4-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub4-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub5</p>
-                    </td>
-                    <td>
-                        <select name="sub5-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub5-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub6</p>
-                    </td>
-                    <td>
-                        <select name="sub6-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub6-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub7</p>
-                    </td>
-                    <td>
-                        <select name="sub7-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub7-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub8</p>
-                    </td>
-                    <td>
-                        <select name="sub8-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub8-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub9</p>
-                    </td>
-                    <td>
-                        <select name="sub9-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub9-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="sub">sub10</p>
-                    </td>
-                    <td>
-                        <select name="sub10-cd" class="sub-cd">
-                            <option value=" "></option>
-                            <option value="10">10</option>
-                            <option value="9">9</option>
-                            <option value="8">8</option>
-                            <option value="7">7</option>
-                            <option value="6">6</option>
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="sub10-gd" class="sub-gd">
-                            <option value="">choose the grade</option>
-                            <option value="10">O</option>
-                            <option value="9">A+</option>
-                            <option value="8">A</option>
-                            <option value="7">B+</option>
-                            <option value="6">B</option>
-                            <option value="5">U</option>
-                            <option value="0">U+</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" id="marigin-bottom">
-                        <div class="button" align="center" onclick="calculate()">
-                            <h5>Calculate</h5>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <!--The javascript fills this section automatically-->
         </div>
 
         <div class="container" align="center" id="result" style="visibility: hidden;">
