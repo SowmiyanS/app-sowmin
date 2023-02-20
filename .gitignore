@@ -1,4 +1,6 @@
 .git
+.firebase/
 .firebase
+.firebase/*
 firebase-debug.log
 .firebase/hosting..cache
