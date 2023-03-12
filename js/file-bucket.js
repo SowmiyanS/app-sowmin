@@ -12,49 +12,21 @@ if(window.innerWidth < 727)
 }
 
 //Main logic starts here
+const db = firebase.firestore();
+
+const check = document.getElementById("pass");
+const ulist = document.getElementById("ulist");
+var fileBucketRef;
+let unsubscribe;
+
 var files = [];
-document.getElementById("files").addEventListener("change", function(e) {
-  files = e.target.files;
-  for (let i = 0; i < files.length; i++) {
-    console.log(files[i]);
-  }
-});
-
-document.getElementById("send").addEventListener("click", function() {
-  //checks if files are selected
-  if (files.length != 0) {
-    //Loops through all the selected files
-    for (let i = 0; i < files.length; i++) {
-      //create a storage reference
-      var storage = firebase.storage().ref(files[i].name);
-
-      //upload file
-      var upload = storage.put(files[i]);
-
-      //update progress bar
-      upload.on(
-        "state_changed",
-        function progress(snapshot) {
-          var percentage =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          document.getElementById("progress").value = percentage;
-        },
-
-        function error() {
-          alert("error uploading file");
-        },
-
-        function complete() {
-          document.getElementById(
-            "uploading"
-          ).innerHTML += `${files[i].name} upoaded <br />`;
-        }
-      );
-    }
-  } else {
-    alert("No file chosen");
-  }
-});
+//function uploadfile(files)
+//{
+  //files = e.target.files;
+//  for (let i = 0; i < files.length; i++) {
+//    console.log(files[i]);
+//  }
+//}
 
 function getFileUrl(filename) {
   //create a storage reference
@@ -71,26 +43,135 @@ function getFileUrl(filename) {
     });
 }
 
-//User Authentication starts
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js'
-import { getAuth } from ''
+function uploadfile(files)
+{
+  //checks if files are selected
+  if (files.length != 0) {
+    if(check.value === "helloworld1")
+    {
+      //Loops through all the selected files
+      for (let i = 0; i < files.length; i++) {
+        //create a storage reference
+        var storage = firebase.storage().ref(files[i].name);
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDDYSRTfoGnvxogfMSe7gcFoQT4_av5dD0",
-  authDomain: "app-sowmin.firebaseapp.com",
-  projectId: "app-sowmin",
-  storageBucket: "app-sowmin.appspot.com",
-  messagingSenderId: "350978195358",
-  appId: "1:350978195358:web:de003f3383da8d538c208f",
-  measurementId: "G-L1GFMVF1YZ"
-};
+        //upload file
+        var upload = storage.put(files[i]);
 
-//const app = initializeApp(firebaseConfig); //returns a firebase app object ?
+        //update progress bar
+        upload.on(
+          "state_changed",
+          function progress(snapshot) {
+            var percentage =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            document.getElementById("progress").value = percentage;
+          },
 
+          function error() {
+            alert("error uploading file");
+          },
 
+          function complete() {
+            document.getElementById(
+              "status"
+            ).innerHTML += `${files[i].name} uploaded <br />`;
+            fileBucketRef = db.collection("file-bucket")
+        const { serverTimestamp } = firebase.firestore.FieldValue;
+        //get file url
+        //var strg = firebase.storage().ref(files[i].name);
+        storage
+          .getDownloadURL()
+          .then(function(url) {
+            fileBucketRef.add(
+              {
+                fileName: String(files[i].name),
+                uid: "helloadmin",
+                url: String(url),
+                createdAt: serverTimestamp()
+              });
+          })
+          .catch(function(error) {
+            console.log(error)
+            console.log("error encountered");
+          });
+          }
+        );
+        
+      }
+      fileBucketRef = db.collection("file-bucket")
+      unsubscribe = fileBucketRef
+        .where("uid", "==", "helloadmin")
+        .onSnapshot(data => 
+        {
+          console.log("inside list update")
+          const items = data.docs.map(doc =>
+          {
+            return `<li><em style="border: 1px solid blueviolet;background-color: rgba(137, 43, 226, 0.1);border-radius: 3px;height: max-content;width: max-content;padding-left: 2px;padding-right: 2px;">${ doc.data().fileName }</em>   <a href="${ doc.data().url }">${ doc.data().fileName }</a>  </li>`
+          });
+          ulist.innerHTML = items.join('');
+        });
+        setTimeout(()=> {unsubscribe();console.log("unsubscried")}, 10000);
+    }
+    else
+    {
+      //unsubscribe && unsubscribe();
+      document.getElementById(
+        "status"
+      ).innerHTML += `you don't have permission to upload!`;
+    }
+  } else {
+    unsubscribe && unsubscribe();
+    alert("No file chosen");
+  }
+}
+console.log("before first load")
+fileBucketRef = db.collection("file-bucket")
+      unsubscribe = fileBucketRef
+        .where("uid", "==", "helloadmin")
+        .onSnapshot(data => 
+        {
+          console.log("inside list update")
+          const items = data.docs.map(doc =>
+          {
+            return `<li><em style="border: 1px solid blueviolet;background-color: rgba(137, 43, 226, 0.1);border-radius: 3px;height: max-content;width: max-content;padding-left: 2px;padding-right: 2px;">${ doc.data().fileName }</em>   <a href="${ doc.data().url }">${ doc.data().fileName }</a>  </li>`
+          });
+          ulist.innerHTML = items.join('');
+        });
+        setTimeout(()=> {unsubscribe();console.log("unsubscried")}, 10000);
 
+//User main starts
+console.log(firebase);
 
-//User Authentication ends
+//function deleteall()
+//{
+//  let list = [];
+//  fileBucketRef = db.collection("file-bucket")
+//      unsubscribe = fileBucketRef
+//        .where("uid", "==", "helloadmin")
+//        .onSnapshot(data => 
+//        {
+//          const items = data.docs.map(doc =>
+//          {
+//            list.push(doc);
+//          });
+//        })
+//      .then( ()=> 
+//      {
+//        unsubscribe();
+//        for(var k = 0; list.length(); k++)
+//        {
+//          var storage = firebase.storage().ref(list[k]);
+//          storage.delete().then(() =>
+//          {
+//            console.log("Deleted in storage");
+//         }).catch((err) =>
+//          {
+//            console.log(err);
+//         })
+//        }
+//      });
+//}
+
+//User main ends
 
 
 //For Popup BoxStart

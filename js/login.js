@@ -116,10 +116,11 @@ auth.onAuthStateChanged(user =>
     {
         if(user)
         {
+            console.log(user);
             console.log(user.displayName);
             sin.style.visibility = "hidden";
             sot.style.visibility = "visible";
-            cnt.innerHTML = `<p>Welcome to app-sowmiN ${user.displayName}!<br> Your UserID is : ${user.uid}</p>`;
+            cnt.innerHTML = `<p>Welcome <em>${user.displayName}</em>!<br> Your UserID is : <em>${user.uid}</em></p>`;
         }
         else
         {
