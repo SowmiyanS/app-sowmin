@@ -11,7 +11,87 @@ if(window.innerWidth < 727)
     }
 }
 
-console.log("hello World")
+//Main logic starts here
+var files = [];
+document.getElementById("files").addEventListener("change", function(e) {
+  files = e.target.files;
+  for (let i = 0; i < files.length; i++) {
+    console.log(files[i]);
+  }
+});
+
+document.getElementById("send").addEventListener("click", function() {
+  //checks if files are selected
+  if (files.length != 0) {
+    //Loops through all the selected files
+    for (let i = 0; i < files.length; i++) {
+      //create a storage reference
+      var storage = firebase.storage().ref(files[i].name);
+
+      //upload file
+      var upload = storage.put(files[i]);
+
+      //update progress bar
+      upload.on(
+        "state_changed",
+        function progress(snapshot) {
+          var percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          document.getElementById("progress").value = percentage;
+        },
+
+        function error() {
+          alert("error uploading file");
+        },
+
+        function complete() {
+          document.getElementById(
+            "uploading"
+          ).innerHTML += `${files[i].name} upoaded <br />`;
+        }
+      );
+    }
+  } else {
+    alert("No file chosen");
+  }
+});
+
+function getFileUrl(filename) {
+  //create a storage reference
+  var storage = firebase.storage().ref(filename);
+
+  //get file url
+  storage
+    .getDownloadURL()
+    .then(function(url) {
+      console.log(url);
+    })
+    .catch(function(error) {
+      console.log("error encountered");
+    });
+}
+
+//User Authentication starts
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js'
+import { getAuth } from ''
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDDYSRTfoGnvxogfMSe7gcFoQT4_av5dD0",
+  authDomain: "app-sowmin.firebaseapp.com",
+  projectId: "app-sowmin",
+  storageBucket: "app-sowmin.appspot.com",
+  messagingSenderId: "350978195358",
+  appId: "1:350978195358:web:de003f3383da8d538c208f",
+  measurementId: "G-L1GFMVF1YZ"
+};
+
+//const app = initializeApp(firebaseConfig); //returns a firebase app object ?
+
+
+
+
+//User Authentication ends
+
 
 //For Popup BoxStart
 //This state variable is a dependancy for the popup component
@@ -87,47 +167,3 @@ function popupoff()
 }
 
 //Popup Box Ends
-
-
-/*Main logic starts here*/ 
-console.log(firebase);
-
-const auth = firebase.auth();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-
-let sin = document.getElementById("signin");
-let sot = document.getElementById("signout");
-let cnt = document.getElementById("content"); 
-
-function signin()
-{
-    auth.signInWithPopup(provider);
-    //document.getElementById("para").innerHTML = "User Authentication is on the way!"
-    
-}
-
-function signout()
-{
-    auth.signOut();
-}
-
-auth.onAuthStateChanged(user => 
-    {
-        if(user)
-        {
-            console.log(user.displayName);
-            sin.style.visibility = "hidden";
-            sot.style.visibility = "visible";
-            cnt.innerHTML = "<p>Welcome to app-sowmiN ${user.displayName}!<br> Your UserID is : ${user.uid}</p>";
-        }
-        else
-        {
-            //not signed in
-            sin.style.visibility = "visible";
-            sot.style.visibility = "hidden";
-            cnt.innerHTML = "";
-        }
-    });
-
-/*Main Logic ends here*/

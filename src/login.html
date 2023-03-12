@@ -6,11 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
     <link rel="stylesheet" href="../css/login.css">
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
-    <!--Above link does not work for first try-->
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" />
+    <!--<script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+    Above link does not work for first try
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>-->
+    <!--<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" />-->
     <title>Login To SowmiN</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script>
+        const firebaseConfig = {
+             apiKey: "AIzaSyDDYSRTfoGnvxogfMSe7gcFoQT4_av5dD0",
+             authDomain: "app-sowmin.firebaseapp.com",
+             projectId: "app-sowmin",
+             storageBucket: "app-sowmin.appspot.com",
+             messagingSenderId: "350978195358",
+             appId: "1:350978195358:web:de003f3383da8d538c208f",
+             measurementId: "G-L1GFMVF1YZ"
+        };
+        firebase.initializeApp(firebaseConfig); //returns a firebase app object ?
+    </script>
 </head>
 <body>
     <div id="body">
@@ -56,10 +70,19 @@
 
         <!--Nav End-->
         <div class="container" align="center">
-            <button align="center" class="button" onclick="signin()">Sign in</button>
+            <div id="signin">
+                <button align="center" class="button" onclick="signin()">Sign in</button>
+            </div>
+            <div id="content">
+                <p>Click the sign in button to sign in!</p>
+            </div>
+            <div id="signout">
+                <button align="center" class="button" onclick="signout()">Sign out</button>
+            </div>
+            
             <p id="para" align="center"></p>
         </div>
     </div>
-    <script src="../js/login.js"></script>
+    <script src="../js/login.js" defer></script>
 </body>
 </html>

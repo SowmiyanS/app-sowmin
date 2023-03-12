@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
+    <link rel="stylesheet" href="../css/file-bucket.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sowmin/file-bucket</title>
+</head>
+<body>
+    <div id="body">
+        <!--Nav Start-->
+        <div id="nav">
+            <table style="width:100%;">
+                <tr>
+                    <td id="td-logo">
+                        <div id="logo" title="SN-home">
+                            <a href="../index.html">
+                                <img id="logo-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745" alt="SN logo">
+                            </a>
+                        </div>
+                    </td>
+                    <td id="td-header" align="center">
+                        <h1 class="light">SowmiN</h1>
+                    </td>
+                    <td id="td-burg">
+                        <!--Note that the ondblclick is working differently for desktop and mobile devices-->
+                        <!--In Desktop, two click, that occur 'quickly' is considered dblclick-->
+                        <!--For Mobile the first click is always as a click-->
+                        <div id="burg" title="More" onclick="popupon()">
+                            <img id="burg-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/burg.png?alt=media&token=4c65b91c-6c1e-4761-a868-69daef00979a" alt="burg logo">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--Pop Box Start-->
+        <div class="popup" id="popup-box" style="visibility: hidden;">
+            <a href="../index.html">
+                <h5 id="popup-h5" align="center" >Home</h6>
+            </a>
+            <a href="./friends.html">
+                <h5 id="popup-h5" align="center" >Friends</h6>
+            </a>
+            <a href="./blog-home.html">
+                <h5 id="popup-h5" align="center" >Blogs</h6>
+            </a>
+        </div>
+        <!--Popup Box End-->
+
+        <!--Nav End-->
+
+        <!--Container Starts-->
+        <div class="container" >
+            <button onclick="signin_function()">Sign In With Google!</button>
+            <p style="margin:0px;">Upload Files</p><br/>
+            <input type="file" id="files" class="button" multiple /><br /><br />
+            <button id="send">Upload</button>
+            <p style="margin:0px;" id="uploading"></p>
+            <progress value="0" max="100" id="progress"></progress>
+        </div>
+        <!--Container Starts-->
+
+        <!--Footer Starts-->
+        <div class="footer" align="center">
+            <table style="width:100%;">
+                <tr>
+                    <td id="td-footer-left">
+
+                    </td>
+                    <td id="td-footer-right">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td id="td-footer-copyright" colspan="2" align="center">
+                        <p class="light">Copyright &copy; 2022 Sowmiyan</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        //import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        //const firebaseConfig = {
+        //  apiKey: "AIzaSyDDYSRTfoGnvxogfMSe7gcFoQT4_av5dD0",
+        //  authDomain: "app-sowmin.firebaseapp.com",
+        //  projectId: "app-sowmin",
+        //  storageBucket: "app-sowmin.appspot.com",
+        //  messagingSenderId: "350978195358",
+        //  appId: "1:350978195358:web:de003f3383da8d538c208f",
+        //  measurementId: "G-L1GFMVF1YZ"
+        //};
+      
+        // Initialize Firebase
+        //const app = initializeApp(firebaseConfig);
+        //const analytics = getAnalytics(app);
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js'
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js'
+        const firebaseConfig = {
+             apiKey: "AIzaSyDDYSRTfoGnvxogfMSe7gcFoQT4_av5dD0",
+             authDomain: "app-sowmin.firebaseapp.com",
+             projectId: "app-sowmin",
+             storageBucket: "app-sowmin.appspot.com",
+             messagingSenderId: "350978195358",
+             appId: "1:350978195358:web:de003f3383da8d538c208f",
+             measurementId: "G-L1GFMVF1YZ"
+        };
+
+        const app = initializeApp(firebaseConfig); //returns a firebase app object ?
+        console.log(app)
+        import { signInWithPopup, GoogleAuthProvider, signOut } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js' 
+        const auth = getAuth() // pass the firebase app to the getAuth object/function ?
+        const provider = new GoogelAuthProvider();
+        //function signin_function()                                        
+ //{ signInWithPopup() }
+     signInWithPopup(auth, provider)
+        .then((result) => {
+             const credential = GoogleAuthProvider.credentialFromResult(result);
+             const token = credential.accessToken;
+             console.log(credentials);
+             console.log(token);
+             const user = result.user;
+             console.log(user);
+         }).catch((error) => {
+             // Handle Errors here.
+             const errorCode = error.code;
+             const errorMessage = error.message;
+             // The email of the user's account used.
+             const email = error.customData.email;
+             // The AuthCredential type that was used.
+             const credential = GoogleAuthProvider.credentialFromError(error); 
+             // ...
+         });
+// }
+        //function signout_function()
+ //{ signOut()}
+     //import { signOut } from 'https://www.gstatic.com/firebasejs/    9.17.2/firebase-auth.js'
+     //const signOut = require('https://www.gstatic.com/firebasejs/    9.17.2/firebase-auth.js')
+     //const auth = getAuth();
+     signOut(auth).then(() => {
+     // Sign-out successful.
+     }).catch((error) => {
+     // An error happened.
+     });
+// }
+
+      </script>
+      <!--<script src="../js/file-bucket.js" defer></script>-->
+</body>
+</html>
