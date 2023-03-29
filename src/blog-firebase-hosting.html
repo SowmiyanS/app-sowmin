@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
-    <link rel="stylesheet" href="../css/blog-install-openssh&git-on-termux.css">
+    <link rel="stylesheet" href="../css/blog-firebase-hosting.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog.sowmin/blog-home/install openssh & git on termux</title>
+    <!--TO-DO link to script and style for highlight js-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>  
+    <script>hljs.highlightAll();</script> 
+    <title>blog.sowmin/blog-home/</title>
 </head>
 <body>
     <!--Nav Start-->
@@ -52,46 +58,27 @@
     <!--Nav Ends-->
 
     <div class="blog-container">
-        <h1 align="center">How to install openssh and git in termux</h1>
+        <h1 align="center">How to use firebase hosting to host static websites</h1>
         <br>
-        <div class="image" align="center">
-            <img src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/Termux-Home.png?alt=media&token=3bcb081e-106a-422b-b92e-5580efcfe39e" alt="Termux" width="250px">
-            <p style="width:240px;">Termux</p>
-        </div>
-        <p>Hello everyone!, in this tutorial we are going to see how to install openssh & git on termux.</p>
+        <p>Hello everyone!, in this tutorial we are going to see about how to use firebase for host your static website!.</p>
         <br>
-        <!--
-        <div class="video" align="center">
-            <video id="video" style="height:420px;" src="../Install-openssh-&-git-on-termux.mp4" controls fullscreen></video>
-        </div>
-    -->
-        <div class="video" align="center">
-            <iframe id="video" height="237" src="https://www.youtube.com/embed/p_9WU1BcZ_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>    
-            </iframe>
-        </div>
-        <p>First run this command</p>
-        <p align="center"><em>pkg update && pkg upgrade</em></p>
-        <p>This command updates the repository of termux.</p>
-        <br>
-        <p>After the command executed, type this command.</p>
-        <div class="image" align="center">
-            <img src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/Install-Openssh-Git.png?alt=media&token=1e0a06ab-d503-4eba-863e-1f5557572d1c" alt="pkg install git openssh" width="250px">
-            <p style="width:240px;">This was a fresh install so you may not see the same output.</p>
-        </div>
-        <p align="center"><em>pkg install openssh git</em></p>
-        <p>It will now install <a href="https://www.openssh.com">openssh</a> and <a href="https://git-scm.com/">git</a>.</p>
-        <br>
-        <p>Hit <em>Y</em> if you are prompted for <em>(Y/n)</em>.</p>
-        <br>
-        <p>And to check if git is installed run,</p>
-        <p align="center"><em>git --version</em></p>
-        <br>
-        <p>To see if openssh is installed run,</p>
-        <p align="center"><em>ssh --help</em></p>
-        <br>
-        <p>That's all for today!.</p>
-    </div>
+        <p>This tutorial assumes that you've already have a project in firebase. Go to your root of the project and run this command to initialize the firebase project.</p>
+        <pre><code class="language-bash">
+            firebase init hosting
+        </code></pre>
+        <p>The <em>index.html</em> must be in the root folder of your project.</p>
+        <p>Press enter to select the default options</p>
+        <p>visit firebase docs for more information. <a href="">firebase-hosting-quickstart</a>.</p>
+        <p>The <em>firebase cli</em> might redirect to login if you have'nt logged in to your firebase cli already</p>
+        <p>This will initialize your firebase project, you may have to select the project if you have multiple project.</p>
+        <p>now that you have initialized your project now we can <em>deploy</em> it to firebase</p>
+        <pre><code class="language-bash">
+            firebase deploy --only
+        </code></pre>
+        <p>This command will upload your project to firebase storage bucket and give an publicly accessible url<p>
+        <p>Thanks for reading!, bye</p>
 
+    </div>
     <!--Footer Starts-->
     <div class="footer" align="center">
         <table style="width:100%;">
@@ -111,6 +98,6 @@
         </table>
     </div>
     <!--Footer Ends-->
-    <script src="../js/blog-install-openssh&git-on-termux.js"></script>
+    <script src="../js/blog-firebase-hosting.js"></script>
 </body>
 </html>

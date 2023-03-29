@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
+    <link rel="stylesheet" href="../css/blog-factorize.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>  
+    <script>hljs.highlightAll();</script> 
+    <title>blog.sowmin/blog-home/factorize</title>
+</head>
+<body>
+    <!--Nav Start-->
+    <div id="blog-nav">
+        <table style="width:100%;">
+            <tr>
+                <td id="td-logo">
+                    <div id="logo" title="SN-home">
+                        <a href="../index.html">
+                            <img id="logo-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745" alt="SN logo">
+                        </a>
+                    </div>
+                </td>
+                <td id="td-header" align="center">
+                    <h1 class="light">SowmiN</h1>
+                </td>
+                <td id="td-burg">
+                    <!--Note that the ondblclick is working differently for desktop and mobile devices-->
+                    <!--In Desktop, two click, that occur 'quickly' is considered dblclick-->
+                    <!--For Mobile the first click is always as a click-->
+                    <div id="burg" title="More" onclick="popupon()">
+                        <img id="burg-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/burg.png?alt=media&token=4c65b91c-6c1e-4761-a868-69daef00979a" alt="burg logo">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--Pop Box Start-->
+    <div class="popup" id="popup-box" style="visibility: hidden;">
+        <a href="../index.html">
+            <h5 id="popup-h5" align="center" >Home</h6>
+        </a>
+        <a href="./friends.html">
+            <h5 id="popup-h5" align="center" >Friends</h6>
+        </a>
+        <a href="./blog-home.html">
+            <h5 id="popup-h5" align="center" >Blogs</h6>
+        </a>
+    </div>
+    <!--Popup Box End-->
+
+    <!--Nav Ends-->
+
+    <div class="blog-container">
+        <h1 align="center">Python program to calculate the factors of the given number</h1>
+        <br>
+        <p>Let's see the code!</p>
+        <p>This code is written by me and venkatesh about a year ago</p>
+        <pre>
+            <code class="language-python">
+                from prime_list import prime_list
+                from time import time
+
+                def Is_prime(list,n):
+	                if n in list :
+		                return True
+	                else :
+		                return False
+		
+                def factorize(n):
+	                status = 1
+	                list = prime_list(n)
+	                temp = n
+	                factors = []
+	                while status == 1 :
+		                if Is_prime(list,temp): #step 1
+			                factors.append(temp)
+			                break
+		                for j in list:                   #step 2
+			                if temp%j == 0:
+				                factors.append(j)
+				                temp = int(temp/j)
+				                break
+		                if temp == 1:               #step 3
+			                status = 0
+	                return factors
+
+                choice = 1	
+                while choice == 1:
+	                n = int(input("Enter the number to find it's factors : "))
+	                t0 = time()
+	                print("The factors of "+str(n)+" is "+str(factorize(n)))
+	                t1 = time()
+	                print("Time taken : "+str(t1-t0)+" sec")
+	                choice = int(input("Enter 1 to continue : "))
+            </code>
+        </pre>
+        <p>The prime_list function is imported by factorize function!</p>
+        <pre>
+            <code class="language-python">
+                def prime_list(n):
+                    status = 1
+                    list = []
+                    for j in range(2,n+1): #Counter loop
+                        for k in range(2,(int(n**0.5)+1)): #Checker loop
+                            if j%k == 0 and j != k:
+                                status = 0
+                                break
+                        if status == 1:
+                            list.append(j)
+                        else:
+                            status = 1
+                    return list
+            </code>
+        </pre>
+    </div>    
+    <!--Footer Starts-->
+    <div class="footer" align="center">
+        <table style="width:100%;">
+            <tr>
+                <td id="td-footer-left">
+
+                </td>
+                <td id="td-footer-right">
+
+                </td>
+            </tr>
+            <tr>
+                <td id="td-footer-copyright" colspan="2" align="center">
+                    <p class="light">Copyright &copy; 2022 Sowmiyan</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--Footer Ends-->
+    <script src="../js/blog-factorize.js"></script>
+</body>
+</html>

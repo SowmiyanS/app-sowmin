@@ -141,35 +141,37 @@ fileBucketRef = db.collection("file-bucket")
 //User main starts
 console.log(firebase);
 
-//function deleteall()
-//{
-//  let list = [];
-//  fileBucketRef = db.collection("file-bucket")
-//      unsubscribe = fileBucketRef
-//        .where("uid", "==", "helloadmin")
-//        .onSnapshot(data => 
-//        {
-//          const items = data.docs.map(doc =>
-//          {
-//            list.push(doc);
-//          });
-//        })
-//      .then( ()=> 
-//      {
-//        unsubscribe();
-//        for(var k = 0; list.length(); k++)
-//        {
-//          var storage = firebase.storage().ref(list[k]);
-//          storage.delete().then(() =>
-//          {
-//            console.log("Deleted in storage");
-//         }).catch((err) =>
-//          {
-//            console.log(err);
-//         })
-//        }
-//      });
-//}
+function deleteall()
+{
+  let list = [];
+  fileBucketRef = db.collection("file-bucket")
+      unsubscribe = fileBucketRef
+        .where("uid", "==", "helloadmin")
+        .onSnapshot(data => 
+        {
+          const items = data.docs.map(doc =>
+          {
+            list.push(doc);
+          });
+        })
+      setTimeout(() =>
+      {
+        unsubscribe();
+        for(var k = 0; list; k++)
+        {
+          var storage = firebase.storage().ref.child(list[k].name);
+          storage.delete().then(() =>
+          {
+            console.log(storage);
+            console.log(list[k]);
+            console.log("Deleted in storage");
+          }).catch((err) =>
+          {
+            console.log(err);
+         })
+        }
+      }, 10000);
+}
 
 //User main ends
 
