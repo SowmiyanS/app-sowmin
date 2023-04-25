@@ -120,7 +120,7 @@ auth.onAuthStateChanged(user =>
             console.log(user.displayName);
             sin.style.visibility = "hidden";
             sot.style.visibility = "visible";
-            cnt.innerHTML = `<p>Welcome <em>${user.displayName}</em>!<br> Your UserID is : <em>${user.uid}</em></p>`;
+            cnt.innerHTML = `<p>Welcome <em>${user.displayName}</em>!<br> Your UserID is : <em>${user.uid}</em></p><img src="${user.photoURL}" alt="user-thumbnail" style="width:40px; height:auto" >`;
         }
         else
         {
