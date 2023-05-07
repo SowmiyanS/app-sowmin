@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
+    <link rel="stylesheet" href="../css/blog-install-alacritty-on-debian.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog.sowmin/blog-home/how to install alacritty terminal on debian</title>
+</head>
+<body>
+    <!--Nav Start-->
+    <div id="blog-nav">
+        <table style="width:100%;">
+            <tr>
+                <td id="td-logo">
+                    <div id="logo" title="SN-home">
+                        <a href="../index.html">
+                            <img id="logo-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745" alt="SN logo">
+                        </a>
+                    </div>
+                </td>
+                <td id="td-header" align="center">
+                    <h1 class="light">SowmiN</h1>
+                </td>
+                <td id="td-burg">
+                    <!--Note that the ondblclick is working differently for desktop and mobile devices-->
+                    <!--In Desktop, two click, that occur 'quickly' is considered dblclick-->
+                    <!--For Mobile the first click is always as a click-->
+                    <div id="burg" title="More" onclick="popupon()">
+                        <img id="burg-img" src="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/burg.png?alt=media&token=4c65b91c-6c1e-4761-a868-69daef00979a" alt="burg logo">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--Pop Box Start-->
+    <div class="popup" id="popup-box" style="visibility: hidden;">
+        <a href="../index.html">
+            <h5 id="popup-h5" align="center" >Home</h6>
+        </a>
+        <a href="./friends.html">
+            <h5 id="popup-h5" align="center" >Friends</h6>
+        </a>
+        <a href="./blog-home.html">
+            <h5 id="popup-h5" align="center" >Blogs</h6>
+        </a>
+    </div>
+    <!--Popup Box End-->
+
+    <!--Nav Ends-->
+
+	<div class="blog-container">
+		<h1 align="center">How to install <em>Alacritty</em> terminal emulator on debian</h1>
+		<p><strong>Debian, Ubuntu and derivatives:</stong></p>
+		<br/>
+		<p><em>sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3</em></p>
+		<br/>
+		<p>After installing Rust and other required dependencies, git clone the alacritty project repository.</p>
+		<br/>
+		<p><em>git clone https://github.com/alacritty/alacritty.git</em></p>
+		<br/>
+		<p><em>cd alacritty</em></p>
+		<br/>
+		<p>Next, run the following command to start the build. This command should be submitted under the cloned alacritty directory.</p>
+		<br/>
+		<p><em>cargo build --release</em></p>
+	</div>
+    <!--Footer Starts-->
+    <div class="footer" align="center">
+        <table style="width:100%;">
+            <tr>
+                <td id="td-footer-left">
+
+                </td>
+                <td id="td-footer-right">
+
+                </td>
+            </tr>
+            <tr>
+                <td id="td-footer-copyright" colspan="2" align="center">
+                    <p class="light">Copyright &copy; 2022 Sowmiyan</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--Footer Ends-->
+    <script src="../js/blog-install-alacritty-on-debian.js"></script>
+</body>
+</html>
