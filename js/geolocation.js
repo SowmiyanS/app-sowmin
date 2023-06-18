@@ -1,5 +1,4 @@
 
-
 // For changing the width of the container
 if(window.innerWidth < 727)
 {
@@ -11,22 +10,6 @@ if(window.innerWidth < 727)
         x.style.width = '95%';
     }
 }
-
-//Gradient div Starts
-//To Change to height of empty div to push footer to the bottom
-const cont = document.getElementsByClassName('container');
-x = cont[0];
-let a = '';
-a = (window.innerHeight - 288) + 'px';
-if(window.innerHeight < 288)
-{
-    x.style.height = '0px'; 
-}
-else
-{
-    x.style.height = a; 
-}
-//Gradient div Ends
 
 
 
@@ -69,21 +52,6 @@ function popupon()
     {
         popupoff()
     }
-
-/*    if(window.innerWidth < 715)
-    {
-        popup.style.top = "100%";
-        popup.style.left = "100%";
-        popup.style.transform = "translate(-130px, -346%)";
-    }
-    else
-    {
-        let factor = 0;
-        factor = (window.innerWidth * 0.1)-(window.innerWidth*0.0325);
-        popup.style.transform = "translate("+factor+"%, 0%)";
-        console.log("translate(-"+factor+"%, 0%)");
-    }*/
-    //popup.style.transform = "translate(10%, 10%, 1%)";
 }
 
 function popupoff()
@@ -104,3 +72,46 @@ function popupoff()
 }
 
 //Popup Box Ends
+
+
+//Main logic starts here
+
+console.log("Hello World!")
+
+//get the paragraph tags
+
+let loctn = document.getElementById("loctn");
+
+// get location
+//
+//
+// WHAT HAPPENS IF I REMOVE THE ASYNC ??
+// Actually nothing happens it seems it is not worth it
+function getLocation() {
+	if(navigator.geolocation) {
+		loadspinanimate();
+		navigator.geolocation.getCurrentPosition(callbackfunc);
+		//console.log("Hello from getLocation()");
+	}
+	else {
+		console.log("Geolocation is not supported in your browseer");
+		loctn.innerHTML = "<p>Geolocation is not supported in your browseer</p>";	
+	}
+}
+
+function loadspinanimate()
+{
+    loctn.style.visibility = "visible";
+    loctn.style.display = "flex"; //centers the spinner
+    loctn.style.flexDirection = "row";
+    loctn.style.flexWrap = "wrap";
+    loctn.style.justifyContent = "center";
+    loctn.style.alignItems = "center";
+    loctn.innerHTML = `<div class="spin"></div>`;
+}
+
+
+function callbackfunc(position) {
+	loctn.innerHTML = "<p>Latitude : " + position.coords.latitude + "</br>Longitude : " + position.coords.longitude + "</p>";
+}
+//Main logic ends here
