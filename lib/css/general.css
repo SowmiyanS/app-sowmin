@@ -1,0 +1,177 @@
+/*Initial CSS Start*/
+*, html
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    vertical-align: middle;/*This is mainly added for the image in between text to align in the middle*/
+}
+/*Initial CSS End*/
+
+/*General CSS Start*/
+.light
+{
+    color: beige;
+}
+/*General CSS End*/
+
+/*loadspinanimate style start*/
+.spin
+{
+    /*display: flex;*/
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(137, 43, 226, 0.1);
+    border-radius: 50%;
+    border-top-color: blueviolet;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin
+{
+    to
+    {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spin
+{
+    to
+    {
+        -webkit-transform: rotate(360deg);
+    }
+}
+/*loadspinanimate style end*/
+
+
+
+/*Container Start*/
+.container
+{
+    width: 700px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px auto 8px auto;
+    text-align: left;
+}
+/*Container End*/
+
+/*GlowyContainer Start*/
+.glowycontainer
+{
+    width: 700px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px auto 8px auto;
+
+    background : linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
+    background-size: 400% 400%;
+    -webkit-animation: gradientBG 10s ease infinite;
+            animation: gradientBG 10s ease infinite;
+
+    /*The above code requires some dependent code above*/
+}
+/*GlowyContainer End*/
+
+
+/*Button Start*/
+.button
+{
+    width:max-content;
+    margin: 8px auto 8px auto;
+    padding: 5px; 
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+}
+
+.button:hover
+{
+    background: linear-gradient(65deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
+    color: beige;
+}
+
+a
+{
+    font-family: sans-serif, monospace;
+    font-style: normal;
+}
+
+a:link
+{
+    color: black;
+}
+
+a:visited
+{
+    color: black;
+}
+
+/*
+a:hover
+{
+    color: beige; 
+        I commented it because this changed the text color even if the mouse was on directly
+        over the text
+        That is the text color changes if the mouse goes to same row as the link
+        This caused the link to change to white color and this caused the text to become invisible
+        Because the background was alo white
+    
+}
+*/
+
+a:active
+{
+    color: black;
+}
+/*Button End*/
+
+/*Emp Styles Start*/
+#img-emp
+{
+    width: 24px;
+    height: auto;
+    border: 1px solid blueviolet;
+    border-radius: 3px;
+    background-color: rgba(137, 43, 226, 0.1);
+}
+em
+{
+    border: 1px solid blueviolet;
+    background-color: rgba(137, 43, 226, 0.1);
+    border-radius: 3px;
+    height: max-content;
+    width: max-content;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+/*Emp Styles End*/
+
+/*Footer Start*/
+.footer
+{
+    background: rgb(78, 78, 78);
+    height: 100px;
+}
+
+/*
+#id-footer-left
+{
+
+}
+
+#id-footer-right
+{
+
+}
+
+#id-footer-copyright
+{
+
+}
+*/
+
+/*Footer End*/
+
+
