@@ -22,6 +22,9 @@ function getLocation() {
 }
 
 function displayDetails(data) {
+	var crt_time = data.current_weather.time;
+	var time_arr = data.hourly.time;
+	var index = time_arr.indexOf(crt_time);
 	weather.innerHTML = `
 	<table>
 		<tr>
@@ -30,35 +33,35 @@ function displayDetails(data) {
 		</tr>
 		<tr>
 			<td>Apparent Temperature</td>
-			<td>${data.hourly.apparent_temperature[167]} ${data.hourly_units.apparent_temperature}</td>
+			<td>${data.hourly.apparent_temperature[index]} ${data.hourly_units.apparent_temperature}</td>
 		</tr>
 		<tr>
 			<td>Humidity</td>
-			<td>${data.hourly.relativehumidity_2m[167]} ${data.hourly_units.relativehumidity_2m}</td>
+			<td>${data.hourly.relativehumidity_2m[index]} ${data.hourly_units.relativehumidity_2m}</td>
 		</tr>
 		<tr>
 			<td>Precipitation</td>
-			<td>${data.hourly.precipitation_probability[167]} ${data.hourly_units.precipitation_probability}</td>
+			<td>${data.hourly.precipitation_probability[index]} ${data.hourly_units.precipitation_probability}</td>
 		</tr>
 		<tr>
 			<td>Rain</td>
-			<td>${data.hourly.rain[167]} ${data.hourly_units.rain}</td>
+			<td>${data.hourly.rain[index]} ${data.hourly_units.rain}</td>
 		</tr>
 		<tr>
 			<td>Visibility</td>
-			<td>${data.hourly.visibility[167]} ${data.hourly_units.visibility}</td>
+			<td>${data.hourly.visibility[index]} ${data.hourly_units.visibility}</td>
 		</tr>
 		<tr>
 			<td>Cloud Cover</td>
-			<td>${data.hourly.cloudcover[167]} ${data.hourly_units.cloudcover}</td>
+			<td>${data.hourly.cloudcover[index]} ${data.hourly_units.cloudcover}</td>
 		</tr>
 		<tr>
 			<td>Radiation</td>
-			<td>${data.hourly.direct_radiation[167]} ${data.hourly_units.direct_radiation}</td>
+			<td>${data.hourly.direct_radiation[index]} ${data.hourly_units.direct_radiation}</td>
 		</tr>
 		<tr>
 			<td>Wind Speed</td>
-			<td>${data.hourly.windspeed_10m[167]} ${data.hourly_units.windspeed_10m}</td>
+			<td>${data.hourly.windspeed_10m[index]} ${data.hourly_units.windspeed_10m}</td>
 		</tr>
 		<tr>
 			<td>Wind Direction</td>
