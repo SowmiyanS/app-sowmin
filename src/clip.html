@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/jpg" href="https://firebasestorage.googleapis.com/v0/b/app-sowmin.appspot.com/o/favicon.png?alt=media&token=5843778a-2c3c-4cbf-861b-c0b706015745"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sowmin/friends</title>
-    <link rel="stylesheet" href="../css/friends.css">
+    <title>Clip</title>
+    <link rel="stylesheet" href="../css/clip.css">
 </head>
 <body>
     <div id="body">
@@ -51,46 +51,21 @@
         <!--Popup Box End-->
 
         <!--Nav End-->
-        <!--Button Start-->
-        <div class="button" align="center">
-            <h4>Aswin</h4>
+        <div align="center" class="container">
+            <h3 align="center">Welcome to Clip</h3>
         </div>
-        <!--Button End-->
-        <!-- <a> tag Button Start-->
-        <a href="https://balajideepan.netlify.app">
-            <div class="button" align="center">
-                <h4>Deepan 😊 </h4>
-            </div>
-        </a>
-        <!-- <a> tag Button End-->
-		<!--Button Start-->
-		<div class="button" align="center">
-            <h4>Mathiyarasu</h4>
+        <div class="container" align="center" id="uri-container">
+            <form onsubmit="main(uri); return false" align="center">
+                <input id="uri" type="text">
+                <br/>
+                <input id="submi" type="submit" value="fetch">
+            </form>
         </div>
-        <!--Button End-->
-        <!--Button Start-->
-        <div class="button" align="center">
-			<h4>Ruban</h4>
-        </div>
-        <!--Button End-->
-        <!--Button Start-->
-        <div class="button" align="center">
-			<h4>Santhosh Kumar <em>IPS</em></h4>
-        </div>
-        <!--Button End-->
-        <!--Button Start-->
-        <div class="button" align="center">
-            <h4>Venkatesh</h4>
-        </div>
-        <!--Button End-->
-		<!--Button Start-->
-        <div class="button" align="center">
-            <h4>Vignesh</h4>
-        </div>
-        <!--Button End-->
-		<div class="container" style="height:800px;">
+
+        <div class="container" align="center" id="result" style="visibility: hidden; display: none;">
 
         </div>
+		
         <!--Footer Start-->
         <div class="footer" align="center">
             <table style="width:100%;">
@@ -111,6 +86,6 @@
         </div>
         <!--Footer End-->
     </div>
-    <script src="../js/friends.js"></script>
+    <script src="../js/clip.js"></script>
 </body>
 </html>

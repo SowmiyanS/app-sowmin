@@ -1,5 +1,4 @@
 
-
 // For changing the width of the container
 if(window.innerWidth < 727)
 {
@@ -11,15 +10,6 @@ if(window.innerWidth < 727)
         x.style.width = '95%';
     }
 }
-
-//For Video Start
-if(/Mobi/i.test(window.navigator.userAgent))
-{
-    const video = document.getElementById('video');
-    video.style.width = '98%';
-    video.style.height = (window.outerWidth)/1.7777+'px';//It calculates the height to match 16:9 ratio  
-}
-//Video Ends
 
 //For Popup BoxStart
 //This state variable is a dependancy for the popup component
@@ -95,3 +85,31 @@ function popupoff()
 }
 
 //Popup Box Ends
+
+//Main function starts here 
+
+async function fetchUri(uri) {
+    const response = await fetch("https://plum-weary-firefly.cyclic.cloud/"+uri.value,);
+
+    return response;
+}
+
+
+function main(uri) {
+    loadspinanimate();
+    fetchUri(uri).then(response => {
+        console.log(response);
+    });
+}
+
+result = document.getElementById("result");
+function loadspinanimate()
+{
+    result.style.visibility = "visible";
+    result.style.display = "flex"; //centers the spinner
+    result.style.flexDirection = "row";
+    result.style.flexWrap = "wrap";
+    result.style.justifyContent = "center";
+    result.style.alignItems = "center";
+    result.innerHTML = `<div class="spin"></div>`;
+}

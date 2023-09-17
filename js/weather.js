@@ -5,9 +5,11 @@ const weather = document.getElementById("weather");
 function loadspinanimate()
 {
     weather.style.visibility = "visible";
-    //weather.style.display = "flex"; //centers the spinner
+    weather.style.display = "flex"; //centers the spinner
     weather.style.flexDirection = "row";
     weather.style.flexWrap = "wrap";
+    weather.style.justifyContent = "center";
+    weather.style.alignItems = "center";
     weather.innerHTML = `<div class="spin"></div>`;
 	getLocation();
 }
