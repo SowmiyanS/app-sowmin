@@ -14,7 +14,7 @@ if(window.innerWidth < 727)
 
 //Gradient div Starts
 //To Change to height of empty div to push footer to the bottom
-const cont = document.getElementsByClassName('container');
+const cont = document.getElementsByClassName('glowycontainer');
 x = cont[0];
 let a = '';
 a = (window.innerHeight - 288) + 'px';

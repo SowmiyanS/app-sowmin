@@ -192,6 +192,17 @@ a:active
     padding: 5px;
     margin: 8px auto 8px auto;
     text-align: left;
+}
+/*Container End*/
+
+/*GlowyContainer Start*/
+.glowycontainer
+{
+    width: 700px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px auto 8px auto;
 
     background : linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
     background-size: 400% 400%;
@@ -200,7 +211,7 @@ a:active
 
     /*The above code requires some dependent code above*/
 }
-/*Container End*/
+/*GlowyContainer End*/
 
 /*Emp Styles Start*/
 #img-emp

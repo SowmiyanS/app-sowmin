@@ -1,0 +1,33 @@
+/*This is the notes css*/
+
+.cnt {
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px auto 8px auto;
+    width: min-width;
+}
+
+.notes {
+    display: grid;
+    padding: 5px;
+    border: 1px solid bluevoilet;
+    gap: 1em;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 12rem) {
+    .notes {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .cnt {
+        width: min(90%, 1000px);
+    }
+}
+
+#note {
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0.4px 0.5px 3.5px 0.1px;
+    height: max-height;
+}
