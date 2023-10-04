@@ -38,11 +38,14 @@ function displayNotes(comp, array) {
 function create(input, textarea) {
     let title = input;
     let content = textarea;
+    const crt = document.getElementById('crt');
+    crt.setAttribute('onclick', '');
     createNote(api+'/note/create',title.value ,content.value).then((data) => {
         // resetting the form for next use
         title.value = "";
         content.value = "";
         insertmessage.innerHTML = "<p>Note Created!!!! <em>Refresh the page to see the changes</em>.</p>";
+        crt.setAttribute('onclick', 'create(input, textarea);');
     });
 }
 
@@ -54,6 +57,8 @@ async function getNotes() {
 }
 
 async function deleteNotes() {
+    const dlt = document.getElementById('dlt');
+    dlt.setAttribute('onclick','');
     const res = await fetch(api+'/note/delete/all', {
         method: "DELETE",
         headers: {
@@ -63,6 +68,7 @@ async function deleteNotes() {
     res.json().then((data) => {
         console.log(data);
         deletemessage.innerHTML = `<p>All the notes are deleted successfully.</p>`;
+        dlt.setAttribute('onclick','deleteNotes();');
     });
 }
 

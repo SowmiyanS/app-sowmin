@@ -70,14 +70,15 @@
             <form onclick="return false;">
                 <label>Title:</label>
                 <br/>
-                <input type="text" id="input">
+                <input type="text" id="input" required>
                 <br/>
                 <label>Content:</label>
                 <br/>
-                <textarea id="textarea" rows="10" cols="40" placeholder="write your notes here...">
+                <textarea id="textarea" rows="10" required cols="40" placeholder="write your notes here...">
                 </textarea>
                 <br/>
-                <input type="submit" onclick="create(input, textarea)" value="create">
+                <!--<input type="submit" class="button" onclick="create(input, textarea);" value="create">-->
+                <div type="submit" id="crt" class="button" onclick="create(input, textarea);">create</div>
             </form>
             <div id="insertmessage">
             <!--Javascripts fills this div-->
@@ -90,7 +91,8 @@
             <form onclick="return false;">
                 <label>Delete:</label>
                 <br/>
-                <input type="button" onclick="deleteNotes()" value="delete">
+                <!--<input type="button" class="button" onclick="deleteNotes();" value="delete">-->
+                <div type="submit" id="dlt" class="button" onclick="deleteNotes();">delete</div>
             </form>
             <div id="deletemessage">
             <!--Javascripts fills this div-->
