@@ -2,6 +2,7 @@
 const notes = document.getElementById('display');
 const insertmessage = document.getElementById('insertmessage');
 const deletemessage = document.getElementById('deletemessage');
+let isdeleted = false;
 let api = 'https://app-sowmin-mysql-db.cyclic.cloud';
 
 loadspinanimate(notes);
@@ -40,13 +41,27 @@ function create(input, textarea) {
     let content = textarea;
     const crt = document.getElementById('crt');
     crt.setAttribute('onclick', '');
-    createNote(api+'/note/create',title.value ,content.value).then((data) => {
-        // resetting the form for next use
-        title.value = "";
-        content.value = "";
-        insertmessage.innerHTML = "<p>Note Created!!!! <em>Refresh the page to see the changes</em>.</p>";
+    if(title.value !== "" && content.value !== "") {
+        //console.log("Inside the if");
+        //console.log("title :"+title);
+        //console.log("textarea :"+textarea);
+        loadspinanimate(insertmessage);
+        createNote(api+'/note/create',title.value ,content.value).then((data) => {
+            // resetting the form for next use
+            title.value = "";
+            content.value = "";
+            insertmessage.removeAttribute('style');
+            insertmessage.innerHTML = "<p>Note Created!!!! <em>Refresh the page to see the changes</em>.</p>";
+            crt.setAttribute('onclick', 'create(input, textarea);');
+        });
+    }
+    else {
+        console.log("Input fields are empty!");
+        insertmessage.removeAttribute('style');
+        insertmessage.innerHTML = "<p style='color: red;'>Enter the title and content to create.</p>";
         crt.setAttribute('onclick', 'create(input, textarea);');
-    });
+    }
+
 }
 
 
@@ -59,17 +74,26 @@ async function getNotes() {
 async function deleteNotes() {
     const dlt = document.getElementById('dlt');
     dlt.setAttribute('onclick','');
-    const res = await fetch(api+'/note/delete/all', {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
-    res.json().then((data) => {
-        console.log(data);
-        deletemessage.innerHTML = `<p>All the notes are deleted successfully.</p>`;
+    if(!isdeleted) {
+        loadspinanimate(deletemessage);
+        const res = await fetch(api+'/note/delete/all', {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        res.json().then((data) => {
+            console.log(data);
+            deletemessage.removeAttribute('style');
+            deletemessage.innerHTML = `<p>All the notes are deleted successfully.</p>`;
+            dlt.setAttribute('onclick','deleteNotes();');
+        });
+        isdeleted = true;
+    }
+    else {
+        deletemessage.innerHTML = `<p style="color: red;">All the notes are already deleted.</p>`;
         dlt.setAttribute('onclick','deleteNotes();');
-    });
+    }
 }
 
 // Example POST method implementation:
