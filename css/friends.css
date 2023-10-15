@@ -148,6 +148,14 @@
     color: beige;
 }
 
+.button:hover>a>h4 { /* how cool is that selecton?!!!!!!!!!!*/
+    color: beige;
+}
+/*I tried .button>a>h4:hover but that resulted in only the color change Right when I hover the mouse over the text itself!.
+ * But what I want is the color should change to white when the mouse goes over the div itself(because when the mouse is at teh div only the color changes to a linear gradient so at that time only we need the text to be white so it is more visible)
+ * So I tried the above selector .button:hover>a>h4 It worked!!*/
+
+
 a
 {
     font-family: 'Courier New', Courier, monospace;
@@ -172,7 +180,7 @@ a:hover
         over the text
         That is the text color changes if the mouse goes to same row as the link
         This caused the link to change to white color and this caused the text to become invisible
-        Because the background was alo white
+        Because the background was also white
     
 }
 */

@@ -27,6 +27,25 @@ function displayDetails(data) {
 	var crt_time = data.current_weather.time;
 	var time_arr = data.hourly.time;
 	var index = time_arr.indexOf(crt_time);
+    if(index == -1) {
+        console.log("index is : "+index);
+        var crtT = crt_time.split(":");
+        var str = "";
+        for(let i = 0;i < time_arr.length;i++) {
+            str = time_arr[i]; 
+            let word = str.split(":");
+            if(word[0] == crtT[0]) {
+                index = i;
+            }
+        }
+        if(index == -1) {
+            console.log("The index is not found, kindly check for errors!, default index to 0");
+            index = 0;
+        }
+        else {
+            console.log("negative index detected, and found the correct index as:" + index);
+        }
+    }
 	weather.innerHTML = `
 	<table>
 		<tr>
