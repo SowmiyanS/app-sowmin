@@ -198,6 +198,41 @@ These are example for flex and grid
 
 /*Pop Style End*/
 
+/*Main style starts*/
+.blog-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog {
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0px 0px 5px 0px;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+}
+
+.a-blog {
+    width: 500px;
+    border-radius: 5px;
+    margin: 0px 0px 5px 0px;
+    display: flex;
+    align-items: center;
+}
+
+#image {
+    width: 100px;
+    height: 60px;
+    text-align: center;
+    background-color: lightblue;
+    margin-right: 5px;
+}
+
+/*Main style ends*/
+
 /*Footer Start*/
 .footer
 {
