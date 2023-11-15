@@ -9,11 +9,12 @@
 }
 
 .notes {
-    display: grid;
+    display: flex;
     padding: 5px;
     border: 1px solid bluevoilet;
     gap: 1em;
-    grid-template-columns: 1fr;
+    justify-content: space-evenly;
+    /* grid-template-columns: 1fr; */
 }
 
 
@@ -22,9 +23,10 @@
     margin-right: 1%;
 }
 
-@media (min-width: 12rem) {
+@media (max-width: 470px) {
     .notes {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+        flex-direction: column;
     }
     .cnt {
         width: min(90%, 1000px);
@@ -40,4 +42,8 @@
     padding: 5px;
     box-shadow: 0.4px 0.5px 3.5px 0.1px;
     height: max-height;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
 }
