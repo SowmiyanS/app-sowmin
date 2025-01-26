@@ -95,7 +95,7 @@ var credits = [0,0];
 async function fetchdata(dept, reg, sem)
 {
     //firebase fetch subjects, credit points for dept, reg, sem
-    let url = "https://app-sowmin-backend-pass1234.cyclic.app/"+reg.toString()+"/"+dept.toUpperCase()+"-"+sem.toString();
+    let url = "https://389b78ee-2253-477d-b763-9a1a8e1578d5.us-east-1.cloud.genez.io/"+reg.toString()+"/"+dept.toUpperCase()+"-"+sem.toString();
     const response = await fetch(url);
     console.log(response);
     let results = await response.json();//.then((data) =>

@@ -3,7 +3,7 @@ const notes = document.getElementById('display');
 const insertmessage = document.getElementById('insertmessage');
 const deletemessage = document.getElementById('deletemessage');
 let isdeleted = false;
-let api = 'https://app-sowmin-mysql-db.cyclic.cloud';
+let api = 'https://0ea1c539-cd71-43df-a403-51c2719593d9.us-east-1.cloud.genez.io';
 
 loadspinanimate(notes);
 getNotes().then(data => {
